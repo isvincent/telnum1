@@ -1,0 +1,2253 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>楊梅高中分機覽表</title>
+  <meta name="description" content="桃園市立楊梅高級中學語音電話分機一覽表，手機專用直式互動資訊網。支援即時搜尋、分類瀏覽、一鍵直撥、語音朗讀及電話音效。">
+  <!-- 引入 Google Fonts: Noto Sans TC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #E11D48;
+      --primary-gradient: linear-gradient(135deg, #FF4B72 0%, #FF8533 50%, #4F46E5 100%);
+      --card-bg: #FFFFFF;
+      --text-main: #0F172A;
+      --text-muted: #475569;
+      --border-color: #E2E8F0;
+      --font-scale: 1;
+    }
+
+    body.font-lg { --font-scale: 1.15; }
+    body.font-xl { --font-scale: 1.28; }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #DCE5EF;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(254, 205, 211, 0.4) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(199, 210, 254, 0.4) 0px, transparent 50%);
+      color: var(--text-main);
+      line-height: 1.5;
+      font-size: calc(16px * var(--font-scale));
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding: 16px 0;
+    }
+
+    @media (max-width: 520px) {
+      body {
+        padding: 0;
+        background: #F8FAFC;
+      }
+    }
+
+    /* 手機直式外框模擬裝置 (在桌機上呈現精美手機外框，手機端自適應全螢幕) */
+    .phone-wrapper {
+      width: 100%;
+      max-width: 440px;
+      min-height: calc(100vh - 32px);
+      background: #F8FAFC;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.18), 0 0 0 10px #1E293B, 0 0 0 12px #94A3B8;
+      border-radius: 44px;
+      overflow: hidden;
+      padding-bottom: 90px;
+    }
+
+    @media (max-width: 520px) {
+      .phone-wrapper {
+        border-radius: 0;
+        box-shadow: none;
+        min-height: 100vh;
+        max-width: 100%;
+        border: none;
+      }
+    }
+
+    /* 手機聽筒/動態島裝飾 */
+    .dynamic-island {
+      width: 110px;
+      height: 24px;
+      background: #000000;
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 20px;
+      z-index: 40;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    @media (max-width: 520px) {
+      .dynamic-island {
+        display: none;
+      }
+    }
+
+    .island-camera {
+      width: 10px;
+      height: 10px;
+      background: #111827;
+      border-radius: 50%;
+      border: 1px solid #374151;
+    }
+
+    .island-sensor {
+      width: 6px;
+      height: 6px;
+      background: #1F2937;
+      border-radius: 50%;
+    }
+
+    /* 頂部裝飾花瓣畫布 */
+    #petal-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 280px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* 頂部 Header 卡片 */
+    .header-card {
+      background: var(--primary-gradient);
+      color: #FFFFFF;
+      padding: 38px 20px 22px;
+      border-radius: 0 0 32px 32px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(225, 29, 72, 0.28);
+    }
+
+    @media (max-width: 520px) {
+      .header-card {
+        padding-top: 24px;
+      }
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .school-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 5px 13px;
+      border-radius: 999px;
+      font-size: calc(13px * var(--font-scale));
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .header-tools {
+      display: flex;
+      gap: 8px;
+    }
+
+    .tool-btn {
+      background: rgba(255, 255, 255, 0.22);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      color: #FFFFFF;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .tool-btn:active {
+      transform: scale(0.86);
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .header-title-wrap {
+      position: relative;
+      z-index: 5;
+      margin-top: 4px;
+    }
+
+    .header-title {
+      font-size: calc(24px * var(--font-scale));
+      font-weight: 900;
+      letter-spacing: 1.2px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .header-subtitle {
+      font-size: calc(13px * var(--font-scale));
+      color: rgba(255, 255, 255, 0.95);
+      margin-top: 6px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .switchboard-pill {
+      background: rgba(0, 0, 0, 0.25);
+      padding: 3px 9px;
+      border-radius: 8px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.2s;
+    }
+
+    .switchboard-pill:active {
+      background: rgba(0, 0, 0, 0.4);
+      transform: scale(0.96);
+    }
+
+    /* 快捷直撥膠囊列 */
+    .quick-dials {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 16px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .quick-dial-card {
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 10px 4px 8px;
+      border-radius: 16px;
+      text-align: center;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .quick-dial-card:active {
+      transform: translateY(2px) scale(0.94);
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    .quick-dial-icon {
+      font-size: 20px;
+      margin-bottom: 2px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+    }
+
+    .quick-dial-label {
+      font-size: calc(12.5px * var(--font-scale));
+      font-weight: 700;
+    }
+
+    .quick-dial-ext {
+      font-size: calc(11.5px * var(--font-scale));
+      opacity: 0.95;
+      font-weight: 600;
+    }
+
+    /* 吸頂搜尋與分類控制區 */
+    .sticky-controls {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(248, 250, 252, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 12px 16px 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    }
+
+    .search-bar-wrap {
+      position: relative;
+      width: 100%;
+    }
+
+    .search-input {
+      width: 100%;
+      height: 50px;
+      background: #FFFFFF;
+      border: 2px solid #E2E8F0;
+      border-radius: 25px;
+      padding: 0 46px 0 46px;
+      font-size: calc(16px * var(--font-scale));
+      font-family: inherit;
+      color: var(--text-main);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 6px 20px rgba(225, 29, 72, 0.18);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94A3B8;
+      pointer-events: none;
+      display: flex;
+    }
+
+    .clear-search-btn {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #E2E8F0;
+      border: none;
+      color: #64748B;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    /* 快捷關鍵字小標籤 */
+    .quick-tags-scroller {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 10px 0 4px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .quick-tags-scroller::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tag-chip {
+      white-space: nowrap;
+      padding: 7px 15px;
+      border-radius: 20px;
+      font-size: calc(13.5px * var(--font-scale));
+      font-weight: 700;
+      background: #FFFFFF;
+      color: #475569;
+      border: 1px solid #CBD5E1;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+
+    .tag-chip.active {
+      background: linear-gradient(135deg, #E11D48, #F43F5E);
+      color: #FFFFFF;
+      border-color: #E11D48;
+      box-shadow: 0 4px 12px rgba(225, 29, 72, 0.28);
+    }
+
+    .tag-chip:active {
+      transform: scale(0.92);
+    }
+
+    /* 統計列與摺疊切換按鈕 */
+    .view-info-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 18px 4px;
+      font-size: calc(13px * var(--font-scale));
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .view-action-btns {
+      display: flex;
+      gap: 6px;
+    }
+
+    .mini-action-btn {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      padding: 5px 12px;
+      border-radius: 12px;
+      font-size: calc(12.5px * var(--font-scale));
+      color: #334155;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s;
+    }
+
+    .mini-action-btn:active {
+      background: #F1F5F9;
+      transform: scale(0.94);
+    }
+
+    /* 內容主要列表 */
+    .content-area {
+      padding: 10px 14px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* 處室卡片容器 */
+    .dept-card {
+      background: #FFFFFF;
+      border-radius: 24px;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+      border: 1px solid rgba(226, 232, 240, 0.85);
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .dept-card.highlight-match {
+      border: 2px solid #E11D48;
+      box-shadow: 0 8px 24px rgba(225, 29, 72, 0.16);
+    }
+
+    /* 處室卡片標頭 */
+    .dept-header {
+      padding: 14px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+    }
+
+    .dept-title-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .dept-icon-box {
+      width: 46px;
+      height: 46px;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      flex-shrink: 0;
+    }
+
+    .dept-info-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dept-name {
+      font-size: calc(18px * var(--font-scale));
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dept-lines {
+      font-size: calc(13px * var(--font-scale));
+      color: var(--text-muted);
+      margin-top: 3px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .line-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #F1F5F9;
+      padding: 3px 8px;
+      border-radius: 8px;
+      font-size: calc(12.5px * var(--font-scale));
+      font-weight: 700;
+      color: #334155;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .line-badge:active {
+      background: #E2E8F0;
+      transform: scale(0.95);
+    }
+
+    .dept-toggle-icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #94A3B8;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .dept-card.collapsed .dept-toggle-icon {
+      transform: rotate(-90deg);
+    }
+
+    .dept-card.collapsed .contacts-list {
+      display: none;
+    }
+
+    /* 處室聯絡人列表 */
+    .contacts-list {
+      padding: 0 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* 單個聯絡項目卡片 */
+    .contact-item {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .contact-item:active {
+      transform: scale(0.985);
+      background: #F1F5F9;
+    }
+
+    .contact-main {
+      flex: 1;
+      padding-right: 10px;
+    }
+
+    .contact-title-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 2px;
+    }
+
+    .contact-title {
+      font-size: calc(16.5px * var(--font-scale));
+      font-weight: 800;
+      color: #1E293B;
+    }
+
+    .contact-name {
+      font-size: calc(16px * var(--font-scale));
+      font-weight: 700;
+      color: #334155;
+      background: #E2E8F0;
+      padding: 1px 8px;
+      border-radius: 6px;
+    }
+
+    .contact-note {
+      font-size: calc(13px * var(--font-scale));
+      color: #64748B;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 3px;
+    }
+
+    /* 分機號碼與操作按鈕區 */
+    .contact-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ext-badge-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+
+    .ext-number-btn {
+      background: linear-gradient(135deg, #E11D48 0%, #BE123C 100%);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 14px;
+      padding: 6px 14px;
+      font-size: calc(20px * var(--font-scale));
+      font-weight: 900;
+      font-family: 'Space Grotesk', monospace, sans-serif;
+      letter-spacing: 1px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3);
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .ext-number-btn:active {
+      transform: scale(0.92);
+      box-shadow: 0 2px 6px rgba(225, 29, 72, 0.2);
+    }
+
+    .fav-star-btn {
+      background: none;
+      border: none;
+      font-size: 22px;
+      color: #CBD5E1;
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .fav-star-btn.active {
+      color: #F59E0B;
+      transform: scale(1.15);
+      text-shadow: 0 2px 6px rgba(245, 158, 11, 0.4);
+    }
+
+    .fav-star-btn:active {
+      transform: scale(0.85);
+    }
+
+    .speak-btn {
+      background: #F1F5F9;
+      border: 1px solid #CBD5E1;
+      color: #475569;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 15px;
+      transition: all 0.2s;
+    }
+
+    .speak-btn:active {
+      background: #E2E8F0;
+      transform: scale(0.9);
+    }
+
+    /* 查無資料空狀態 */
+    .empty-search {
+      text-align: center;
+      padding: 50px 20px;
+      background: white;
+      border-radius: 28px;
+      border: 2px dashed #CBD5E1;
+      margin: 10px 0;
+    }
+
+    .empty-icon {
+      font-size: 52px;
+      margin-bottom: 12px;
+      animation: float 2.5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .empty-title {
+      font-size: calc(18px * var(--font-scale));
+      font-weight: 800;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+
+    .empty-desc {
+      font-size: calc(14px * var(--font-scale));
+      color: #64748B;
+      margin-bottom: 18px;
+    }
+
+    /* 底部固定導覽列 */
+    .bottom-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid #E2E8F0;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+      z-index: 50;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    @media (max-width: 520px) {
+      .bottom-bar {
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 100%;
+      }
+    }
+
+    .nav-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      background: none;
+      border: none;
+      color: #64748B;
+      font-size: calc(11px * var(--font-scale));
+      font-weight: 700;
+      cursor: pointer;
+      padding: 4px 12px;
+      border-radius: 12px;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .nav-btn svg {
+      width: 22px;
+      height: 22px;
+      stroke-width: 2.2;
+    }
+
+    .nav-btn.active {
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .nav-btn:active {
+      transform: scale(0.9);
+    }
+
+    /* 撥號盤互動 Modal 彈窗 */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 100;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      animation: fadeIn 0.2s ease-out;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .dial-modal-card {
+      width: 100%;
+      max-width: 440px;
+      background: #FFFFFF;
+      border-radius: 32px 32px 0 0;
+      padding: 24px 20px calc(24px + env(safe-area-inset-bottom));
+      box-shadow: 0 -12px 35px rgba(0, 0, 0, 0.25);
+      animation: slideUp 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .modal-title {
+      font-size: calc(20px * var(--font-scale));
+      font-weight: 800;
+      color: #1E293B;
+    }
+
+    .modal-close-btn {
+      background: #F1F5F9;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748B;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .target-call-info {
+      background: linear-gradient(135deg, #F8FAFC, #F1F5F9);
+      border-radius: 20px;
+      padding: 16px;
+      text-align: center;
+      margin-bottom: 16px;
+      border: 1px solid #E2E8F0;
+    }
+
+    .target-dept-label {
+      font-size: calc(14px * var(--font-scale));
+      color: #64748B;
+      font-weight: 700;
+    }
+
+    .target-name-label {
+      font-size: calc(22px * var(--font-scale));
+      font-weight: 900;
+      color: #0F172A;
+      margin: 4px 0;
+    }
+
+    .target-ext-display {
+      font-size: calc(30px * var(--font-scale));
+      font-weight: 900;
+      color: #E11D48;
+      letter-spacing: 2px;
+      font-family: 'Space Grotesk', monospace, sans-serif;
+    }
+
+    /* 撥號動作組 */
+    .call-action-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .action-btn-large {
+      padding: 14px;
+      border-radius: 18px;
+      font-size: calc(16.5px * var(--font-scale));
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      border: none;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .btn-call-direct {
+      background: linear-gradient(135deg, #10B981, #059669);
+      color: white;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+    }
+
+    .btn-copy-ext {
+      background: linear-gradient(135deg, #3B82F6, #2563EB);
+      color: white;
+      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
+    }
+
+    .action-btn-large:active {
+      transform: scale(0.94);
+    }
+
+    /* 模擬電話數字鍵盤 */
+    .dialpad-container {
+      margin-top: 10px;
+      background: #F8FAFC;
+      border-radius: 22px;
+      padding: 14px;
+      border: 1px solid #E2E8F0;
+    }
+
+    .dialpad-toggle-title {
+      font-size: calc(13px * var(--font-scale));
+      color: #64748B;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .dialpad-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    .key-btn {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      border-radius: 16px;
+      height: 50px;
+      font-size: calc(20px * var(--font-scale));
+      font-weight: 900;
+      font-family: 'Space Grotesk', monospace, sans-serif;
+      color: #1E293B;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+      transition: all 0.1s;
+    }
+
+    .key-btn:active {
+      background: #E2E8F0;
+      transform: scale(0.92);
+      border-color: #94A3B8;
+    }
+
+    .key-sub {
+      font-size: 9px;
+      color: #94A3B8;
+      font-weight: 700;
+      margin-top: -4px;
+      font-family: 'Noto Sans TC', sans-serif;
+    }
+
+    /* 浮動 Toast 提示 */
+    .toast-box {
+      position: fixed;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-30px);
+      background: rgba(15, 23, 42, 0.95);
+      color: #FFFFFF;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-size: calc(14.5px * var(--font-scale));
+      font-weight: 800;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      z-index: 200;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toast-box.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* 學校資訊 Modal */
+    .about-modal {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: calc(14.5px * var(--font-scale));
+      color: #334155;
+    }
+
+    .about-item {
+      display: flex;
+      gap: 12px;
+      background: #F8FAFC;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid #E2E8F0;
+      align-items: center;
+    }
+
+    .about-item strong {
+      color: #0F172A;
+      min-width: 76px;
+      font-weight: 800;
+    }
+
+    /* 處室主題色配置 */
+    .color-amber .dept-icon-box { background: linear-gradient(135deg, #F59E0B, #D97706); }
+    .color-slate .dept-icon-box { background: linear-gradient(135deg, #64748B, #475569); }
+    .color-rose .dept-icon-box { background: linear-gradient(135deg, #F43F5E, #E11D48); }
+    .color-emerald .dept-icon-box { background: linear-gradient(135deg, #10B981, #059669); }
+    .color-blue .dept-icon-box { background: linear-gradient(135deg, #3B82F6, #1D4ED8); }
+    .color-teal .dept-icon-box { background: linear-gradient(135deg, #14B8A6, #0D9488); }
+    .color-orange .dept-icon-box { background: linear-gradient(135deg, #FB923C, #EA580C); }
+    .color-indigo .dept-icon-box { background: linear-gradient(135deg, #6366F1, #4338CA); }
+    .color-violet .dept-icon-box { background: linear-gradient(135deg, #8B5CF6, #6D28D9); }
+    .color-cyan .dept-icon-box { background: linear-gradient(135deg, #06B6D4, #0891B2); }
+    .color-sky .dept-icon-box { background: linear-gradient(135deg, #38BDF8, #0284C7); }
+    .color-pink .dept-icon-box { background: linear-gradient(135deg, #EC4899, #DB2777); }
+    .color-purple .dept-icon-box { background: linear-gradient(135deg, #A855F7, #7E22CE); }
+    .color-lime .dept-icon-box { background: linear-gradient(135deg, #84CC16, #65A30D); }
+    .color-fuchsia .dept-icon-box { background: linear-gradient(135deg, #D946EF, #C026D3); }
+    .color-red .dept-icon-box { background: linear-gradient(135deg, #EF4444, #DC2626); }
+    .color-yellow .dept-icon-box { background: linear-gradient(135deg, #EAB308, #CA8A04); }
+
+    mark.highlight {
+      background-color: #FDE047;
+      color: #854D0E;
+      font-weight: 800;
+      padding: 0 3px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="phone-wrapper">
+    <!-- 手機動態島飾件 -->
+    <div class="dynamic-island">
+      <div class="island-camera"></div>
+      <div class="island-sensor"></div>
+    </div>
+
+    <!-- 飄落花瓣動畫 Canvas -->
+    <canvas id="petal-canvas"></canvas>
+
+    <!-- 頂部 Header -->
+    <header class="header-card">
+      <div class="header-top">
+        <div class="school-badge">
+          <span>🌸</span>
+          <span>桃園市立楊梅高中</span>
+        </div>
+        <div class="header-tools">
+          <button id="toggle-sound-btn" class="tool-btn" title="切換音效" aria-label="切換音效">
+            <span id="sound-icon">🔊</span>
+          </button>
+          <button id="toggle-font-btn" class="tool-btn" title="切換字體大小" aria-label="調整字級">
+            <span>🔤</span>
+          </button>
+          <button id="info-btn" class="tool-btn" title="學校聯絡資訊" aria-label="學校資訊">
+            <span>ℹ️</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="header-title-wrap">
+        <h1 class="header-title">
+          <span>楊梅高中分機覽表</span>
+        </h1>
+        <div class="header-subtitle">
+          <span>總機：</span>
+          <span class="switchboard-pill" onclick="app.openDialModal('楊梅高中總機', '代表號直撥', '03-4789618')">03-4789618</span>
+          <span class="switchboard-pill" onclick="app.openDialModal('楊梅高中總機', '二線直撥', '03-4780449')">二線: 4780449</span>
+          <span class="switchboard-pill" onclick="app.openDialModal('楊梅高中總機', '三線直撥', '03-4780740')">三線: 4780740</span>
+        </div>
+      </div>
+
+      <!-- 快捷緊急直撥大按鈕 -->
+      <div class="quick-dials">
+        <div class="quick-dial-card" onclick="app.openDialModal('警衛室', '大門值勤保全', '1110')">
+          <div class="quick-dial-icon">🛡️</div>
+          <div class="quick-dial-label">警衛室</div>
+          <div class="quick-dial-ext">1110</div>
+        </div>
+        <div class="quick-dial-card" onclick="app.openDialModal('校安中心', '值班教官/學安', '1351')">
+          <div class="quick-dial-icon">🚨</div>
+          <div class="quick-dial-label">校安中心</div>
+          <div class="quick-dial-ext">1351</div>
+        </div>
+        <div class="quick-dial-card" onclick="app.openDialModal('健康中心', '陳護理師', '1119')">
+          <div class="quick-dial-icon">🏥</div>
+          <div class="quick-dial-label">健康中心</div>
+          <div class="quick-dial-ext">1119</div>
+        </div>
+        <div class="quick-dial-card" onclick="app.openDialModal('總務處', '總機服務主任', '1401')">
+          <div class="quick-dial-icon">📞</div>
+          <div class="quick-dial-label">總務主任</div>
+          <div class="quick-dial-ext">1401</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 吸頂搜尋與快捷分類控制區 -->
+    <div class="sticky-controls">
+      <div class="search-bar-wrap">
+        <span class="search-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </span>
+        <input 
+          type="text" 
+          id="search-input" 
+          class="search-input" 
+          placeholder="搜尋分機、姓名、組別、處室、大樓..." 
+          autocomplete="off"
+          enterkeyhint="search"
+        >
+        <button id="clear-search-btn" class="clear-search-btn" aria-label="清空搜尋">✕</button>
+      </div>
+
+      <!-- 快速關鍵字滑動 Chip 標籤 -->
+      <div class="quick-tags-scroller" id="tags-scroller">
+        <button class="tag-chip active" data-category="all">✨ 全部</button>
+        <button class="tag-chip" data-category="fav">⭐ 我的常用</button>
+        <button class="tag-chip" data-category="行政處室">🏛️ 行政處室</button>
+        <button class="tag-chip" data-category="教學導師">👨‍🏫 教學導師</button>
+        <button class="tag-chip" data-category="專科實驗">🔬 專科實驗</button>
+        <button class="tag-chip" data-category="大樓專區">🏢 大樓專區</button>
+        <button class="tag-chip" data-category="校園設施">🏪 校園設施</button>
+      </div>
+    </div>
+
+    <!-- 狀態與檢視切換列 -->
+    <div class="view-info-bar">
+      <span id="result-stats">顯示全部分機資料</span>
+      <div class="view-action-btns">
+        <button id="expand-all-btn" class="mini-action-btn">
+          <span>展開全部</span>
+        </button>
+        <button id="collapse-all-btn" class="mini-action-btn">
+          <span>摺疊全部</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 主要內容區 -->
+    <main class="content-area" id="content-area">
+      <!-- 動態渲染卡片清單 -->
+    </main>
+
+    <!-- 底部固定選單導覽列 -->
+    <nav class="bottom-bar">
+      <button class="nav-btn active" data-tab="all" onclick="app.setCategory('all')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        <span>總覽</span>
+      </button>
+      <button class="nav-btn" data-tab="fav" onclick="app.setCategory('fav')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        <span>我的常用</span>
+      </button>
+      <button class="nav-btn" onclick="app.openSearchFocus()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <span>檢索</span>
+      </button>
+      <button class="nav-btn" onclick="app.openFreeDialer()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        <span>撥號盤</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- 撥號與操作 Modal -->
+  <div class="modal-overlay" id="dial-modal" onclick="app.closeDialModal(event)">
+    <div class="dial-modal-card" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-title-text">聯絡資訊</h3>
+        <button class="modal-close-btn" onclick="app.closeDialModal()">✕</button>
+      </div>
+
+      <div class="target-call-info">
+        <div class="target-dept-label" id="modal-dept-label">行政處室</div>
+        <div class="target-name-label" id="modal-name-label">校長室 鍾校長</div>
+        <div class="target-ext-display" id="modal-ext-display">1101</div>
+      </div>
+
+      <div class="call-action-grid">
+        <a id="modal-call-link" class="action-btn-large btn-call-direct" href="#">
+          <span>📞 直撥電話</span>
+        </a>
+        <button class="action-btn-large btn-copy-ext" onclick="app.copyCurrentModalExt()">
+          <span>📋 複製號碼</span>
+        </button>
+      </div>
+
+      <!-- 模擬電話音效鍵盤 (支援真實 DTMF 雙音多頻) -->
+      <div class="dialpad-container">
+        <div class="dialpad-toggle-title">
+          <span>🎹 模擬電話撥號盤 (支援 DTMF 雙音)</span>
+        </div>
+        <div class="dialpad-grid">
+          <button class="key-btn" onclick="app.pressKey('1')">1<span class="key-sub">.</span></button>
+          <button class="key-btn" onclick="app.pressKey('2')">2<span class="key-sub">ABC</span></button>
+          <button class="key-btn" onclick="app.pressKey('3')">3<span class="key-sub">DEF</span></button>
+          <button class="key-btn" onclick="app.pressKey('4')">4<span class="key-sub">GHI</span></button>
+          <button class="key-btn" onclick="app.pressKey('5')">5<span class="key-sub">JKL</span></button>
+          <button class="key-btn" onclick="app.pressKey('6')">6<span class="key-sub">MNO</span></button>
+          <button class="key-btn" onclick="app.pressKey('7')">7<span class="key-sub">PQRS</span></button>
+          <button class="key-btn" onclick="app.pressKey('8')">8<span class="key-sub">TUV</span></button>
+          <button class="key-btn" onclick="app.pressKey('9')">9<span class="key-sub">WXYZ</span></button>
+          <button class="key-btn" onclick="app.pressKey('*')">*<span class="key-sub"></span></button>
+          <button class="key-btn" onclick="app.pressKey('0')">0<span class="key-sub">+</span></button>
+          <button class="key-btn" onclick="app.pressKey('#')">#<span class="key-sub"></span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 學校資訊 Modal -->
+  <div class="modal-overlay" id="info-modal" onclick="app.closeInfoModal(event)">
+    <div class="dial-modal-card" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 class="modal-title">學校總機與位置</h3>
+        <button class="modal-close-btn" onclick="app.closeInfoModal()">✕</button>
+      </div>
+      <div class="about-modal">
+        <div class="about-item">
+          <strong>學校全銜</strong>
+          <span>桃園市立楊梅高級中學</span>
+        </div>
+        <div class="about-item">
+          <strong>總機代表</strong>
+          <span style="color:#E11D48; font-weight:800;">03-4789618</span>
+        </div>
+        <div class="about-item">
+          <strong>電話二線</strong>
+          <span>03-4780449</span>
+        </div>
+        <div class="about-item">
+          <strong>電話三線</strong>
+          <span>03-4780740</span>
+        </div>
+        <div class="about-item">
+          <strong>版本資訊</strong>
+          <span>編製：總務處 (版本：115/09/07)</span>
+        </div>
+        <div class="about-item">
+          <strong>使用小技巧</strong>
+          <span>點選任一分機按鈕可一鍵撥號或複製；點選 ★ 星號可加入「我的常用」隨時快速查詢！</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 浮動提示 Toast -->
+  <div class="toast-box" id="toast-box">
+    <span id="toast-icon">✨</span>
+    <span id="toast-msg">已完成操作</span>
+  </div>
+
+  <script>
+    /**
+     * 楊梅高中分機資料集 (完整精準收錄 PDF 內容)
+     */
+    const DIRECTORY_DATA = {
+      title: "楊梅高中分機覽表",
+      schoolName: "桃園市立楊梅高級中學",
+      switchboard: "03-4789618",
+      lines: ["4780449", "4780740"],
+      departments: [
+        {
+          id: "principal",
+          name: "校長室",
+          category: "行政處室",
+          color: "amber",
+          icon: "👑",
+          directLine: "",
+          fax: "4856117",
+          contacts: [
+            { title: "校長", ext: "1101", name: "鍾校長", note: "校長室" },
+            { title: "秘書", ext: "1102", name: "黃秘書", note: "綜理秘書業務" },
+            { title: "技工", ext: "1103", name: "劉小姐", note: "校長室事務支援" },
+            { title: "校長宿舍", ext: "1104", name: "", note: "教職員宿舍區" }
+          ]
+        },
+        {
+          id: "cooperation",
+          name: "協力組織與會議空間",
+          category: "校園設施",
+          color: "slate",
+          icon: "🏛️",
+          directLine: "",
+          fax: "",
+          contacts: [
+            { title: "警衛室", ext: "1110", name: "", note: "大門口保全安全維護" },
+            { title: "聯合辦公室", ext: "1112", name: "", note: "綜合業務協作辦公" },
+            { title: "第一會議室", ext: "1113", name: "", note: "大型行政會議室" },
+            { title: "交通安全教室", ext: "1114", name: "", note: "交安教育宣導空間" },
+            { title: "第二會議室", ext: "1115", name: "", note: "中型研討會議室" }
+          ]
+        },
+        {
+          id: "personnel",
+          name: "人事室",
+          category: "行政處室",
+          color: "rose",
+          icon: "👥",
+          directLine: "4784103",
+          fax: "4755774",
+          contacts: [
+            { title: "主任", ext: "1121", name: "邱主任", note: "綜理人事室業務" },
+            { title: "組員", ext: "1122", name: "陳先生", note: "考勤與福利承辦" }
+          ]
+        },
+        {
+          id: "accounting",
+          name: "會計室",
+          category: "行政處室",
+          color: "emerald",
+          icon: "📊",
+          directLine: "4789683",
+          fax: "4782322",
+          contacts: [
+            { title: "主任", ext: "1131", name: "林主任", note: "綜理歲計會計業務" },
+            { title: "組員", ext: "1132", name: "張小姐", note: "經費預算審查" },
+            { title: "佐理員", ext: "1133", name: "陳小姐", note: "單據核銷會計帳務" }
+          ]
+        },
+        {
+          id: "academic",
+          name: "教務處",
+          category: "行政處室",
+          color: "blue",
+          icon: "📖",
+          directLine: "4783574",
+          fax: "4882675",
+          contacts: [
+            { title: "主任", ext: "1201", name: "李主任", note: "綜理教務行政業務" },
+            { title: "教學組長", ext: "1211", name: "邱組長", note: "排課與教學管理" },
+            { title: "幹事", ext: "1212", name: "張小姐", note: "教學組行政事務" },
+            { title: "印刷室", ext: "1213", name: "陳先生", note: "試卷與教材印製" },
+            { title: "註冊組長", ext: "1221", name: "賴組長", note: "學籍成績各項證明" },
+            { title: "幹事", ext: "1222", name: "曾小姐", note: "註冊業務承辦" },
+            { title: "設備組長", ext: "1231", name: "鄭組長", note: "教學設備與教科書" },
+            { title: "助理員", ext: "1232", name: "謝小姐", note: "設備器材保管" },
+            { title: "書記", ext: "1233", name: "吳先生", note: "教務處文書檔案" },
+            { title: "數位前導助理", ext: "1234", name: "王小姐", note: "前導計畫專案" },
+            { title: "實驗研究組長", ext: "1241", name: "邱組長", note: "多元學習與升學輔導" },
+            { title: "幹事", ext: "1242", name: "宋先生", note: "實研組行政事務" },
+            { title: "均質化專案助理", ext: "1243", name: "", note: "高中均質化計畫推動" },
+            { title: "學期歷程檔案助理", ext: "1244", name: "楊小姐", note: "學習歷程檔案平臺維護" },
+            { title: "試務組組長", ext: "1251", name: "蘇組長", note: "校內外各類考試" },
+            { title: "幹事", ext: "1252", name: "蔡小姐", note: "試務規劃與成績統計" },
+            { title: "教務處分機", ext: "1261", name: "", note: "教務處辦公室備用分機" },
+            { title: "英語教師", ext: "1262", name: "", note: "英文科專任教學空間" },
+            { title: "雙語助理", ext: "1263", name: "葉先生", note: "雙語教育推展計畫" },
+            { title: "雙語教師", ext: "1264", name: "高老師", note: "雙語學程外語教學" }
+          ]
+        },
+        {
+          id: "general_affairs",
+          name: "總務處",
+          category: "行政處室",
+          color: "teal",
+          icon: "🛡️",
+          directLine: "4783349",
+          fax: "4780164",
+          contacts: [
+            { title: "主任", ext: "1401", name: "劉主任", note: "綜理總務修繕工程營繕" },
+            { title: "文書組長", ext: "1411", name: "黃組長", note: "公文收發印信檔案" },
+            { title: "臨時人員", ext: "1412", name: "鍾小姐", note: "文書檔案整理" },
+            { title: "出納組長", ext: "1421", name: "黃組長", note: "公庫現金收支薪津發放" },
+            { title: "庶務組長", ext: "1431", name: "劉組長", note: "校園環境水電財產營繕" },
+            { title: "財管管理員", ext: "1432", name: "謝先生", note: "財產物品管理報廢" },
+            { title: "採購幹事", ext: "1433", name: "張先生", note: "招標政府採購工程" },
+            { title: "學務創新人力", ext: "1434", name: "彭先生", note: "總務處業務協力支援" },
+            { title: "臨時人員", ext: "1435", name: "宋先生", note: "校園維護事務" }
+          ]
+        },
+        {
+          id: "coop_store",
+          name: "員生社",
+          category: "校園設施",
+          color: "orange",
+          icon: "🛒",
+          directLine: "4750453",
+          fax: "",
+          contacts: [
+            { title: "員生社", ext: "1491", name: "林小姐", note: "員生消費合作社及制服文具" }
+          ]
+        },
+        {
+          id: "homeroom_teachers",
+          name: "導師辦公室",
+          category: "教學導師",
+          color: "indigo",
+          icon: "🎓",
+          directLine: "",
+          fax: "",
+          contacts: [
+            { title: "悅知樓1樓導師室(高一)", ext: "1361, 1365", name: "", note: "悅知樓1F（高一導師）" },
+            { title: "悅知樓2樓導師室(高一)", ext: "1366", name: "", note: "悅知樓2F（高一導師）" },
+            { title: "悅知樓3樓導師室(高二)", ext: "1362, 1364", name: "", note: "悅知樓3F（高二導師）" },
+            { title: "日新樓1樓導師室(高三)", ext: "1363, 1367", name: "", note: "日新樓1F（高三導師）" }
+          ]
+        },
+        {
+          id: "subject_teachers",
+          name: "專任教師辦公室",
+          category: "教學導師",
+          color: "violet",
+          icon: "💼",
+          directLine: "",
+          fax: "",
+          contacts: [
+            { title: "蘊慧樓1樓專一辦公室", ext: "1271, 1275", name: "", note: "蘊慧樓1F" },
+            { title: "蘊慧樓2樓專二辦公室", ext: "1272", name: "", note: "蘊慧樓2F" },
+            { title: "日新樓2樓專三辦公室", ext: "1273", name: "", note: "日新樓2F" },
+            { title: "日新樓3樓專四辦公室", ext: "1274", name: "", note: "日新樓3F" }
+          ]
+        },
+        {
+          id: "science_labs",
+          name: "自然實驗室",
+          category: "專科實驗",
+          color: "cyan",
+          icon: "🧪",
+          directLine: "",
+          fax: "",
+          contacts: [
+            { title: "化學實驗室", ext: "1373", name: "", note: "化學科實驗教學" },
+            { title: "基礎理化實驗室", ext: "1374", name: "", note: "理化實驗探究空間" },
+            { title: "物理實驗室", ext: "1375", name: "", note: "物理科實驗教學" },
+            { title: "生物實驗室", ext: "1376", name: "", note: "生物顯微鏡與解剖觀察" },
+            { title: "基礎生物實驗室", ext: "1378", name: "", note: "基礎生命科學實驗" },
+            { title: "地科實驗室", ext: "1379", name: "", note: "地球科學天文地質" }
+          ]
+        },
+        {
+          id: "special_classrooms",
+          name: "專科教室",
+          category: "專科實驗",
+          color: "sky",
+          icon: "💻",
+          directLine: "",
+          fax: "",
+          contacts: [
+            { title: "啟明樓校史室", ext: "1284", name: "", note: "啟明樓校史展示典藏" },
+            { title: "語言教室", ext: "1285", name: "", note: "外語聽力與情境互動" },
+            { title: "蘊慧樓電腦機房", ext: "1286", name: "", note: "蘊慧樓校園主機伺服中心" },
+            { title: "電腦教室一", ext: "1287", name: "", note: "學生資訊科技教學" },
+            { title: "視聽一教室", ext: "1288", name: "", note: "大型多媒體視聽投影" },
+            { title: "電腦教室二", ext: "1289", name: "", note: "程式設計專業電腦教室" },
+            { title: "美術教室", ext: "1291", name: "", note: "藝能美育創作空間" },
+            { title: "科技應用教室", ext: "1292", name: "", note: "新興科技動手做實作" },
+            { title: "新興科技推廣教室", ext: "1293", name: "", note: "AI前瞻科技推廣研習" },
+            { title: "雙語教室", ext: "1294", name: "", note: "全英語情境雙語教學" },
+            { title: "電腦教室三", ext: "1295", name: "", note: "資訊技能檢定專用教室" },
+            { title: "探究與實作教室", ext: "1296", name: "", note: "高中自主探究與實作學習" },
+            { title: "環境教育中心", ext: "1297", name: "", note: "永續生態校園教育展示" }
+          ]
+        },
+        {
+          id: "rixin_classrooms",
+          name: "日新樓專科教室",
+          category: "專科實驗",
+          color: "pink",
+          icon: "🎨",
+          directLine: "",
+          fax: "",
+          contacts: [
+            { title: "英語情境教室", ext: "1711", name: "", note: "日新樓英語沉浸互動空間" },
+            { title: "日新樓展演中心", ext: "1712", name: "", note: "日新樓藝文動態展演空間" },
+            { title: "護理教室", ext: "1751", name: "", note: "日新樓健康與護理實作" },
+            { title: "計概教室", ext: "1752", name: "", note: "日新樓計算機概論教學" },
+            { title: "音樂教室", ext: "1761", name: "", note: "日新樓音樂合唱琴房教學" },
+            { title: "藝術生活教室", ext: "1764", name: "", note: "日新樓藝術美感生活空間" },
+            { title: "視覺藝術教室", ext: "1765", name: "", note: "日新樓平面與立體視覺創作" }
+          ]
+        },
+        {
+          id: "yufeng_building",
+          name: "御風樓",
+          category: "大樓專區",
+          color: "purple",
+          icon: "🍃",
+          directLine: "",
+          fax: "",
+          contacts: [
+            { title: "御風2-1", ext: "2421", name: "", note: "御風樓2樓空間" },
+            { title: "御風2-2", ext: "2422", name: "", note: "御風樓2樓空間" },
+            { title: "御風2-3", ext: "2423", name: "", note: "御風樓2樓空間" },
+            { title: "御風3-1", ext: "2431", name: "", note: "御風樓3樓空間" },
+            { title: "御風3-2", ext: "2432", name: "", note: "御風樓3樓空間" },
+            { title: "御風3-3", ext: "2433", name: "", note: "御風樓3樓空間" },
+            { title: "御風3-4", ext: "2434", name: "", note: "御風樓3樓空間" },
+            { title: "社團教室2", ext: "2435", name: "", note: "御風樓學生社團排練研習" }
+          ]
+        },
+        {
+          id: "life_science_building",
+          name: "生科大樓",
+          category: "大樓專區",
+          color: "lime",
+          icon: "🛠️",
+          directLine: "",
+          fax: "",
+          contacts: [
+            { title: "體育器材室", ext: "1811", name: "", note: "生科大樓體育運動器材管理" },
+            { title: "烹飪教室", ext: "1822", name: "", note: "生科大樓家政烹飪烘焙專業教室" },
+            { title: "生活科技教室", ext: "1821", name: "", note: "生科大樓工藝木工機器人實作" },
+            { title: "家政教室", ext: "1822", name: "", note: "生科大樓家政縫紉生活美學" }
+          ]
+        },
+        {
+          id: "vocational",
+          name: "實習處",
+          category: "行政處室",
+          color: "fuchsia",
+          icon: "⚙️",
+          directLine: "",
+          fax: "",
+          contacts: [
+            { title: "實習處主任", ext: "1701", name: "簡主任", note: "綜理職業類科實習輔導" },
+            { title: "實習就業組長", ext: "1702", name: "蔡組長", note: "產學合作與就業技能輔導" },
+            { title: "資訊科主任", ext: "1703", name: "廖主任", note: "資訊科專業課程指導" },
+            { title: "技佐", ext: "1704", name: "林先生", note: "實習工場設備保養維護" },
+            { title: "電子科主任", ext: "1705", name: "余主任", note: "電子科專業課程規劃" },
+            { title: "技士", ext: "1706", name: "卓小姐", note: "技能檢定與工場管理" }
+          ]
+        },
+        {
+          id: "student_affairs",
+          name: "學務處",
+          category: "行政處室",
+          color: "orange",
+          icon: "🏃",
+          directLine: "4758950",
+          fax: "4757034",
+          contacts: [
+            { title: "主任", ext: "1301", name: "呂主任", note: "綜理學生事務推展" },
+            { title: "午餐秘書", ext: "1302", name: "李老師", note: "校園團膳午餐安全管理" },
+            { title: "學務創新人力", ext: "1303", name: "呂先生", note: "學務行政各項專案" },
+            { title: "訓育組長", ext: "1311", name: "簡組長", note: "品格教育與公民訓練" },
+            { title: "幹事", ext: "1312", name: "傅小姐", note: "訓育組行政業務" },
+            { title: "活動組長", ext: "1321", name: "魏組長", note: "學生會與班級社團自治" },
+            { title: "學務創新人力", ext: "1322", name: "林先生", note: "校園活動行政支援" },
+            { title: "體育組長", ext: "1331", name: "廖組長", note: "體育競賽運動會校隊訓練" },
+            { title: "游泳池", ext: "1333", name: "陳先生", note: "校園游泳池水質營運管理" },
+            { title: "管理員", ext: "1334", "name": "鍾小姐", note: "體育館借用與器材保管" },
+            { title: "跆拳道館", ext: "1335", name: "", note: "跆拳道校隊特色專用場館" },
+            { title: "衛生組長", ext: "1341", name: "詹組長", note: "環境整潔環保資源回收" },
+            { title: "護理師(健康中心)", ext: "1342", name: "陳小姐", note: "健康中心緊急傷病救護" },
+            { title: "學務創新人力", ext: "1343", name: "張先生", note: "衛生組清潔督導支援" },
+            { title: "健康中心", ext: "1119", name: "陳小姐", note: "健康中心值班分機" },
+            { title: "禮堂準備室", ext: "1324", name: "", note: "活動中心大型集會音響控制" }
+          ]
+        },
+        {
+          id: "campus_safety",
+          name: "校安中心",
+          category: "行政處室",
+          color: "red",
+          icon: "🚨",
+          directLine: "4854998",
+          fax: "4780428",
+          contacts: [
+            { title: "學務創新人力", ext: "1351", name: "廖先生", note: "校園安全24小時值勤輪值" },
+            { title: "生輔組長", ext: "1352", name: "張組長", note: "生活常規服裝儀容輔導" },
+            { title: "學務創新人力", ext: "1353", name: "李先生", note: "緊急校安通報防制霸凌" },
+            { title: "學務創新人力", ext: "1354", name: "陳先生", note: "校內外定時安全巡查" },
+            { title: "幹事", ext: "1355", name: "范小姐", note: "學生請假改過銷過業務" },
+            { title: "學務創新人力", ext: "1356", name: "郭先生", note: "生輔組行政專案承辦" },
+            { title: "學務創新人力", ext: "1357", name: "彭先生", note: "防音反毒校園宣導工作" }
+          ]
+        },
+        {
+          id: "counseling",
+          name: "輔導室",
+          category: "行政處室",
+          color: "pink",
+          icon: "💖",
+          directLine: "4758437",
+          fax: "",
+          contacts: [
+            { title: "輔導主任", ext: "1503", name: "林主任", note: "綜理學生心理與輔導業務" },
+            { title: "專任輔導教師", ext: "1504", name: "陳老師", note: "個別諮商與心理測驗評量" },
+            { title: "專任輔導教師", ext: "1507", name: "吳老師", note: "學生情緒壓力輔導諮詢" },
+            { title: "專任輔導教師", ext: "1501", name: "金老師", note: "親師溝通個案輔導會議" },
+            { title: "專任輔導教師", ext: "1502", name: "陳老師", note: "生命教育與生涯輔導" },
+            { title: "特教教師1", ext: "1505", name: "何老師", note: "特教IEP個別化教育計畫" },
+            { title: "特教教師2", ext: "1506", name: "林老師", note: "特殊教育課程調整與陪伴" },
+            { title: "特教教師3", ext: "1511", name: "曾老師", note: "身心障礙學生轉銜輔導" },
+            { title: "生涯資訊室", ext: "1508", name: "", note: "各大專院校簡章升學資料" },
+            { title: "團體諮商室", ext: "1509", name: "", note: "班級或小團體輔導隱密空間" },
+            { title: "學習中心", ext: "1510", name: "", note: "特教資源教室學習補救" }
+          ]
+        },
+        {
+          id: "library",
+          name: "圖書館",
+          category: "行政處室",
+          color: "yellow",
+          icon: "📚",
+          directLine: "4780586",
+          fax: "",
+          contacts: [
+            { title: "主任", ext: "1601", name: "施主任", note: "綜理圖書館各項推廣業務" },
+            { title: "讀者服務組長", ext: "1602", name: "何組長", note: "借還書圖書採購小論文比賽" },
+            { title: "資訊媒體組長", ext: "1603", name: "賴組長", note: "校園網路硬體媒體推展" },
+            { title: "幹事/讀者服務櫃台", ext: "1605", name: "呂小姐", note: "櫃台借閱還書諮詢登記" },
+            { title: "喜閱學堂", ext: "1606", name: "", note: "學生課後自主閱覽自修室" },
+            { title: "演藝廳", ext: "1607", name: "", note: "演講講座專題多功能廳" }
+          ]
+        }
+      ]
+    };
+
+    /**
+     * Web Audio API 音效引擎 (支援 DTMF 雙音多頻電話音與互動反饋)
+     */
+    class SoundEngine {
+      constructor() {
+        this.ctx = null;
+        this.enabled = true;
+        this.dtmfFreqs = {
+          '1': [697, 1209], '2': [697, 1336], '3': [697, 1477],
+          '4': [770, 1209], '5': [770, 1336], '6': [770, 1477],
+          '7': [852, 1209], '8': [852, 1336], '9': [852, 1477],
+          '*': [941, 1209], '0': [941, 1336], '#': [941, 1477]
+        };
+      }
+
+      initCtx() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) {
+            this.ctx = new AudioContext();
+          }
+        }
+        if (this.ctx && this.ctx.state === 'suspended') {
+          this.ctx.resume();
+        }
+      }
+
+      playTap() {
+        if (!this.enabled) return;
+        this.initCtx();
+        if (!this.ctx) return;
+        try {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(600, this.ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(260, this.ctx.currentTime + 0.05);
+          gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
+          gain.gain.linearRampToValueAtTime(0, this.ctx.currentTime + 0.05);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + 0.05);
+        } catch(e) {}
+      }
+
+      playSuccess() {
+        if (!this.enabled) return;
+        this.initCtx();
+        if (!this.ctx) return;
+        try {
+          const now = this.ctx.currentTime;
+          [523.25, 659.25, 783.99].forEach((freq, i) => {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, now + i * 0.08);
+            gain.gain.setValueAtTime(0.15, now + i * 0.08);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + 0.25);
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            osc.start(now + i * 0.08);
+            osc.stop(now + i * 0.08 + 0.25);
+          });
+        } catch(e) {}
+      }
+
+      playStar() {
+        if (!this.enabled) return;
+        this.initCtx();
+        if (!this.ctx) return;
+        try {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(880, this.ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(1320, this.ctx.currentTime + 0.16);
+          gain.gain.setValueAtTime(0.15, this.ctx.currentTime);
+          gain.gain.linearRampToValueAtTime(0, this.ctx.currentTime + 0.16);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + 0.16);
+        } catch(e) {}
+      }
+
+      playDTMF(key) {
+        if (!this.enabled) return;
+        this.initCtx();
+        if (!this.ctx) return;
+        const freqs = this.dtmfFreqs[key];
+        if (!freqs) return;
+        try {
+          const now = this.ctx.currentTime;
+          const duration = 0.14;
+          const gainNode = this.ctx.createGain();
+          gainNode.gain.setValueAtTime(0.15, now);
+          gainNode.gain.exponentialRampToValueAtTime(0.001, now + duration);
+          gainNode.connect(this.ctx.destination);
+
+          freqs.forEach(freq => {
+            const osc = this.ctx.createOscillator();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, now);
+            osc.connect(gainNode);
+            osc.start(now);
+            osc.stop(now + duration);
+          });
+        } catch(e) {}
+      }
+    }
+
+    /**
+     * 飄落梅花背景動畫
+     */
+    class PetalBackground {
+      constructor(canvasId) {
+        this.canvas = document.getElementById(canvasId);
+        if (!this.canvas) return;
+        this.ctx = this.canvas.getContext('2d');
+        this.petals = [];
+        this.init();
+      }
+
+      init() {
+        this.resize();
+        window.addEventListener('resize', () => this.resize());
+        for (let i = 0; i < 18; i++) {
+          this.petals.push(this.createPetal(true));
+        }
+        this.animate();
+      }
+
+      resize() {
+        if (!this.canvas) return;
+        this.canvas.width = this.canvas.parentElement.clientWidth;
+        this.canvas.height = 260;
+      }
+
+      createPetal(randomY = false) {
+        return {
+          x: Math.random() * (this.canvas.width || 400),
+          y: randomY ? Math.random() * (this.canvas.height || 260) : -15,
+          size: Math.random() * 7 + 6,
+          speedX: Math.random() * 1.5 - 0.5,
+          speedY: Math.random() * 1.2 + 0.8,
+          rotation: Math.random() * 360,
+          rotSpeed: Math.random() * 2 - 1,
+          opacity: Math.random() * 0.4 + 0.35
+        };
+      }
+
+      animate() {
+        if (!this.ctx) return;
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        this.petals.forEach((p, index) => {
+          p.x += p.speedX;
+          p.y += p.speedY;
+          p.rotation += p.rotSpeed;
+
+          if (p.y > this.canvas.height || p.x < -20 || p.x > this.canvas.width + 20) {
+            this.petals[index] = this.createPetal();
+          }
+
+          this.ctx.save();
+          this.ctx.translate(p.x, p.y);
+          this.ctx.rotate((p.rotation * Math.PI) / 180);
+          this.ctx.beginPath();
+          this.ctx.ellipse(0, 0, p.size, p.size * 0.65, 0, 0, Math.PI * 2);
+          this.ctx.fillStyle = `rgba(255, 220, 230, ${p.opacity})`;
+          this.ctx.fill();
+          this.ctx.restore();
+        });
+
+        requestAnimationFrame(() => this.animate());
+      }
+    }
+
+    /**
+     * 主應用控制器
+     */
+    class AppController {
+      constructor() {
+        this.sound = new SoundEngine();
+        this.currentCategory = 'all';
+        this.searchQuery = '';
+        this.favorites = this.loadFavorites();
+        this.collapsedDepts = new Set();
+        this.currentDialInfo = null;
+        this.fontSizes = ['', 'font-lg', 'font-xl'];
+        this.fontIndex = 0;
+
+        this.initDOMElements();
+        this.bindEvents();
+        this.render();
+      }
+
+      initDOMElements() {
+        this.contentArea = document.getElementById('content-area');
+        this.searchInput = document.getElementById('search-input');
+        this.clearSearchBtn = document.getElementById('clear-search-btn');
+        this.tagsScroller = document.getElementById('tags-scroller');
+        this.resultStats = document.getElementById('result-stats');
+        this.toastBox = document.getElementById('toast-box');
+        this.toastMsg = document.getElementById('toast-msg');
+        this.toastIcon = document.getElementById('toast-icon');
+        this.dialModal = document.getElementById('dial-modal');
+        this.infoModal = document.getElementById('info-modal');
+        this.soundIcon = document.getElementById('sound-icon');
+      }
+
+      bindEvents() {
+        // 搜尋監聽
+        this.searchInput.addEventListener('input', (e) => {
+          this.searchQuery = e.target.value.trim();
+          this.clearSearchBtn.style.display = this.searchQuery ? 'flex' : 'none';
+          this.sound.playTap();
+          this.render();
+        });
+
+        // 清除搜尋
+        this.clearSearchBtn.addEventListener('click', () => {
+          this.searchInput.value = '';
+          this.searchQuery = '';
+          this.clearSearchBtn.style.display = 'none';
+          this.searchInput.focus();
+          this.sound.playTap();
+          this.render();
+        });
+
+        // 分類標籤點擊
+        this.tagsScroller.addEventListener('click', (e) => {
+          const btn = e.target.closest('.tag-chip');
+          if (!btn) return;
+          const category = btn.dataset.category;
+          this.setCategory(category);
+        });
+
+        // 音效切換
+        document.getElementById('toggle-sound-btn').addEventListener('click', () => {
+          this.sound.enabled = !this.sound.enabled;
+          this.soundIcon.textContent = this.sound.enabled ? '🔊' : '🔇';
+          this.showToast(this.sound.enabled ? '已開啟操作音效' : '已關閉操作音效', '🎵');
+          if (this.sound.enabled) this.sound.playSuccess();
+        });
+
+        // 字體大小循環切換
+        document.getElementById('toggle-font-btn').addEventListener('click', () => {
+          document.body.classList.remove(...this.fontSizes.filter(Boolean));
+          this.fontIndex = (this.fontIndex + 1) % this.fontSizes.length;
+          const nextFont = this.fontSizes[this.fontIndex];
+          if (nextFont) document.body.classList.add(nextFont);
+          const labels = ['標準字體', '大字體', '特大字體'];
+          this.showToast(`已切換為：${labels[this.fontIndex]}`, '🔤');
+          this.sound.playTap();
+        });
+
+        // 學校資訊 Modal
+        document.getElementById('info-btn').addEventListener('click', () => {
+          this.sound.playTap();
+          this.infoModal.classList.add('active');
+        });
+
+        // 全部展開與摺疊
+        document.getElementById('expand-all-btn').addEventListener('click', () => {
+          this.collapsedDepts.clear();
+          this.sound.playTap();
+          this.render();
+        });
+
+        document.getElementById('collapse-all-btn').addEventListener('click', () => {
+          DIRECTORY_DATA.departments.forEach(d => this.collapsedDepts.add(d.id));
+          this.sound.playTap();
+          this.render();
+        });
+      }
+
+      setCategory(cat) {
+        this.currentCategory = cat;
+        this.sound.playTap();
+
+        const chips = this.tagsScroller.querySelectorAll('.tag-chip');
+        chips.forEach(c => {
+          c.classList.toggle('active', c.dataset.category === cat);
+        });
+
+        const navBtns = document.querySelectorAll('.nav-btn');
+        navBtns.forEach(b => {
+          b.classList.toggle('active', b.dataset.tab === cat);
+        });
+
+        this.render();
+      }
+
+      openSearchFocus() {
+        this.sound.playTap();
+        this.searchInput.focus();
+        window.scrollTo({ top: 120, behavior: 'smooth' });
+      }
+
+      openFreeDialer() {
+        this.openDialModal('楊梅高中總機', '代表號撥號', '03-4789618');
+      }
+
+      loadFavorites() {
+        try {
+          const raw = localStorage.getItem('ymsh_phone_favs');
+          return raw ? JSON.parse(raw) : [];
+        } catch(e) {
+          return [];
+        }
+      }
+
+      saveFavorites() {
+        try {
+          localStorage.setItem('ymsh_phone_favs', JSON.stringify(this.favorites));
+        } catch(e) {}
+      }
+
+      toggleFavorite(ext, deptName, title) {
+        const key = `${deptName}-${title}-${ext}`;
+        const idx = this.favorites.indexOf(key);
+        if (idx >= 0) {
+          this.favorites.splice(idx, 1);
+          this.showToast(`已移出常用：${title} (${ext})`, '⚪');
+          this.sound.playTap();
+        } else {
+          this.favorites.push(key);
+          this.showToast(`已加入常用：${title} (${ext})`, '⭐');
+          this.sound.playStar();
+        }
+        this.saveFavorites();
+        this.render();
+      }
+
+      isFavorite(ext, deptName, title) {
+        const key = `${deptName}-${title}-${ext}`;
+        return this.favorites.includes(key);
+      }
+
+      toggleDeptCollapse(deptId) {
+        if (this.collapsedDepts.has(deptId)) {
+          this.collapsedDepts.delete(deptId);
+        } else {
+          this.collapsedDepts.add(deptId);
+        }
+        this.sound.playTap();
+        this.render();
+      }
+
+      speakContact(deptName, title, name, ext) {
+        this.sound.playTap();
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel();
+          const personText = name ? `${name}` : '';
+          const text = `${deptName}，${title} ${personText}，分機號碼 ${ext}`;
+          const utterance = new SpeechSynthesisUtterance(text);
+          utterance.lang = 'zh-TW';
+          utterance.rate = 1.0;
+          window.speechSynthesis.speak(utterance);
+          this.showToast(`正在朗讀：${deptName} ${title}`, '🗣️');
+        } else {
+          this.showToast('瀏覽器不支援語音朗讀', '⚠️');
+        }
+      }
+
+      copyText(text, successMsg = '已複製到剪貼簿') {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(() => {
+            this.sound.playSuccess();
+            this.showToast(successMsg, '📋');
+          }).catch(() => {
+            this.fallbackCopy(text, successMsg);
+          });
+        } else {
+          this.fallbackCopy(text, successMsg);
+        }
+      }
+
+      fallbackCopy(text, successMsg) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand('copy');
+          this.sound.playSuccess();
+          this.showToast(successMsg, '📋');
+        } catch (err) {
+          this.showToast('複製失敗，請手動複製', '⚠️');
+        }
+        document.body.removeChild(ta);
+      }
+
+      showToast(msg, icon = '✨') {
+        this.toastMsg.textContent = msg;
+        this.toastIcon.textContent = icon;
+        this.toastBox.classList.add('show');
+        clearTimeout(this.toastTimer);
+        this.toastTimer = setTimeout(() => {
+          this.toastBox.classList.remove('show');
+        }, 2200);
+      }
+
+      openDialModal(deptName, title, ext) {
+        this.sound.playTap();
+        this.currentDialInfo = { deptName, title, ext };
+
+        document.getElementById('modal-dept-label').textContent = deptName;
+        document.getElementById('modal-name-label').textContent = title;
+        document.getElementById('modal-ext-display').textContent = ext;
+
+        const cleanExt = ext.split(/[, ]+/)[0].trim();
+        const callLink = document.getElementById('modal-call-link');
+        if (ext.startsWith('03-') || ext.length === 7) {
+          callLink.href = `tel:${ext.replace(/-/g, '')}`;
+        } else {
+          callLink.href = `tel:034789618,${cleanExt}`;
+        }
+
+        this.dialModal.classList.add('active');
+      }
+
+      closeDialModal(e) {
+        if (e && e.target !== this.dialModal) return;
+        this.sound.playTap();
+        this.dialModal.classList.remove('active');
+      }
+
+      closeInfoModal(e) {
+        if (e && e.target !== this.infoModal) return;
+        this.sound.playTap();
+        this.infoModal.classList.remove('active');
+      }
+
+      copyCurrentModalExt() {
+        if (!this.currentDialInfo) return;
+        this.copyText(this.currentDialInfo.ext, `已複製分機：${this.currentDialInfo.ext}`);
+      }
+
+      pressKey(key) {
+        this.sound.playDTMF(key);
+        const display = document.getElementById('modal-ext-display');
+        display.textContent += key;
+      }
+
+      highlight(text, query) {
+        if (!query || !text) return text;
+        const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+        return text.replace(regex, '<mark class="highlight">$1</mark>');
+      }
+
+      render() {
+        const q = this.searchQuery.toLowerCase();
+        let matchedCount = 0;
+
+        const filteredDepts = DIRECTORY_DATA.departments.map(dept => {
+          if (this.currentCategory !== 'all' && this.currentCategory !== 'fav') {
+            if (dept.category !== this.currentCategory) return null;
+          }
+
+          const matchedContacts = dept.contacts.filter(contact => {
+            const isFav = this.isFavorite(contact.ext, dept.name, contact.title);
+            if (this.currentCategory === 'fav' && !isFav) return false;
+
+            if (!q) return true;
+
+            const inTitle = contact.title.toLowerCase().includes(q);
+            const inName = (contact.name || '').toLowerCase().includes(q);
+            const inExt = contact.ext.toLowerCase().includes(q);
+            const inNote = (contact.note || '').toLowerCase().includes(q);
+            const inDept = dept.name.toLowerCase().includes(q);
+            const inDirect = (dept.directLine || '').toLowerCase().includes(q);
+            const inFax = (dept.fax || '').toLowerCase().includes(q);
+
+            return inTitle || inName || inExt || inNote || inDept || inDirect || inFax;
+          });
+
+          if (matchedContacts.length === 0) return null;
+
+          matchedCount += matchedContacts.length;
+          return {
+            ...dept,
+            contacts: matchedContacts
+          };
+        }).filter(Boolean);
+
+        if (this.searchQuery) {
+          this.resultStats.textContent = `搜尋「${this.searchQuery}」找到 ${matchedCount} 筆項目`;
+        } else if (this.currentCategory === 'fav') {
+          this.resultStats.textContent = `我的常用清單（共 ${matchedCount} 筆）`;
+        } else if (this.currentCategory !== 'all') {
+          this.resultStats.textContent = `【${this.currentCategory}】（共 ${matchedCount} 筆）`;
+        } else {
+          this.resultStats.textContent = `全校分機總覽（共 ${DIRECTORY_DATA.departments.length} 個處室與空間）`;
+        }
+
+        if (filteredDepts.length === 0) {
+          this.contentArea.innerHTML = `
+            <div class="empty-search">
+              <div class="empty-icon">🔍</div>
+              <div class="empty-title">查無相關分機資訊</div>
+              <div class="empty-desc">找不到與「${this.searchQuery}」符合的結果。<br>請嘗試搜尋處室名稱、姓名或分機數字。</div>
+              <button class="mini-action-btn" style="margin: 0 auto; padding: 8px 18px;" onclick="app.clearSearch()">
+                清空搜尋條件
+              </button>
+            </div>
+          `;
+          return;
+        }
+
+        this.contentArea.innerHTML = filteredDepts.map(dept => {
+          const isCollapsed = this.collapsedDepts.has(dept.id);
+          const hasSearchMatch = Boolean(this.searchQuery);
+
+          return `
+            <div class="dept-card color-${dept.color} ${isCollapsed && !hasSearchMatch ? 'collapsed' : ''} ${hasSearchMatch ? 'highlight-match' : ''}">
+              <div class="dept-header" onclick="app.toggleDeptCollapse('${dept.id}')">
+                <div class="dept-title-left">
+                  <div class="dept-icon-box">
+                    <span>${dept.icon}</span>
+                  </div>
+                  <div class="dept-info-text">
+                    <div class="dept-name">
+                      <span>${this.highlight(dept.name, q)}</span>
+                    </div>
+                    <div class="dept-lines">
+                      ${dept.directLine ? `<span class="line-badge" onclick="event.stopPropagation(); app.openDialModal('${dept.name}', '直撥專線', '${dept.directLine}')">📞 專線: ${this.highlight(dept.directLine, q)}</span>` : ''}
+                      ${dept.fax ? `<span class="line-badge" onclick="event.stopPropagation(); app.copyText('${dept.fax}', '已複製傳真號碼')">📠 傳真: ${this.highlight(dept.fax, q)}</span>` : ''}
+                    </div>
+                  </div>
+                </div>
+                <div class="dept-toggle-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="contacts-list">
+                ${dept.contacts.map(c => {
+                  const isFav = this.isFavorite(c.ext, dept.name, c.title);
+                  const extTokens = c.ext.split(/[, ]+/).filter(Boolean);
+
+                  return `
+                    <div class="contact-item">
+                      <div class="contact-main">
+                        <div class="contact-title-row">
+                          <span class="contact-title">${this.highlight(c.title, q)}</span>
+                          ${c.name ? `<span class="contact-name">${this.highlight(c.name, q)}</span>` : ''}
+                        </div>
+                        ${c.note ? `<div class="contact-note">📍 ${this.highlight(c.note, q)}</div>` : ''}
+                      </div>
+
+                      <div class="contact-actions">
+                        <button 
+                          class="fav-star-btn ${isFav ? 'active' : ''}" 
+                          title="${isFav ? '移出常用' : '加入常用'}"
+                          onclick="app.toggleFavorite('${c.ext}', '${dept.name}', '${c.title}')"
+                        >
+                          ${isFav ? '★' : '☆'}
+                        </button>
+
+                        <button 
+                          class="speak-btn" 
+                          title="語音朗讀分機"
+                          onclick="app.speakContact('${dept.name}', '${c.title}', '${c.name || ''}', '${c.ext}')"
+                        >
+                          📢
+                        </button>
+
+                        <div class="ext-badge-group">
+                          ${extTokens.map(token => `
+                            <button 
+                              class="ext-number-btn" 
+                              title="撥打或複製分機 ${token}"
+                              onclick="app.openDialModal('${dept.name}', '${c.title} ${c.name || ''}', '${token}')"
+                            >
+                              <span>${this.highlight(token, q)}</span>
+                            </button>
+                          `).join('')}
+                        </div>
+                      </div>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      clearSearch() {
+        this.searchInput.value = '';
+        this.searchQuery = '';
+        this.clearSearchBtn.style.display = 'none';
+        this.currentCategory = 'all';
+        this.render();
+      }
+    }
+
+    let app, petals;
+    window.addEventListener('DOMContentLoaded', () => {
+      app = new AppController();
+      petals = new PetalBackground('petal-canvas');
+    });
+  </script>
+</body>
+</html>

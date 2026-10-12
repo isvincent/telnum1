@@ -1,0 +1,1040 @@
+{
+  "title": "楊梅高中分機覽表",
+  "school_name": "桃園市立楊梅高級中學",
+  "switchboard": {
+    "main": "03-4789618",
+    "line2": "4780449",
+    "line3": "4780740"
+  },
+  "meta": {
+    "editor": "總務處",
+    "version": "115/09/07"
+  },
+  "departments": [
+    {
+      "id": "principal",
+      "name": "校長室",
+      "category": "行政處室",
+      "color": "amber",
+      "icon": "crown",
+      "direct_line": "",
+      "fax": "4856117",
+      "contacts": [
+        {
+          "title": "校長",
+          "ext": "1101",
+          "name": "鍾校長",
+          "note": "校長室"
+        },
+        {
+          "title": "秘書",
+          "ext": "1102",
+          "name": "黃秘書",
+          "note": ""
+        },
+        {
+          "title": "技工",
+          "ext": "1103",
+          "name": "劉小姐",
+          "note": ""
+        },
+        {
+          "title": "校長宿舍",
+          "ext": "1104",
+          "name": "",
+          "note": "宿舍"
+        }
+      ]
+    },
+    {
+      "id": "cooperation",
+      "name": "協力組織與會議空間",
+      "category": "校園設施",
+      "color": "slate",
+      "icon": "building",
+      "direct_line": "",
+      "fax": "",
+      "contacts": [
+        {
+          "title": "警衛室",
+          "ext": "1110",
+          "name": "",
+          "note": "大門口保全安全維護"
+        },
+        {
+          "title": "聯合辦公室",
+          "ext": "1112",
+          "name": "",
+          "note": ""
+        },
+        {
+          "title": "第一會議室",
+          "ext": "1113",
+          "name": "",
+          "note": ""
+        },
+        {
+          "title": "交通安全教室",
+          "ext": "1114",
+          "name": "",
+          "note": ""
+        },
+        {
+          "title": "第二會議室",
+          "ext": "1115",
+          "name": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "personnel",
+      "name": "人事室",
+      "category": "行政處室",
+      "color": "rose",
+      "icon": "users",
+      "direct_line": "4784103",
+      "fax": "4755774",
+      "contacts": [
+        {
+          "title": "主任",
+          "ext": "1121",
+          "name": "邱主任",
+          "note": "人事室"
+        },
+        {
+          "title": "組員",
+          "ext": "1122",
+          "name": "陳先生",
+          "note": "人事室"
+        }
+      ]
+    },
+    {
+      "id": "accounting",
+      "name": "會計室",
+      "category": "行政處室",
+      "color": "emerald",
+      "icon": "calculator",
+      "direct_line": "4789683",
+      "fax": "4782322",
+      "contacts": [
+        {
+          "title": "主任",
+          "ext": "1131",
+          "name": "林主任",
+          "note": "會計室"
+        },
+        {
+          "title": "組員",
+          "ext": "1132",
+          "name": "張小姐",
+          "note": "會計室"
+        },
+        {
+          "title": "佐理員",
+          "ext": "1133",
+          "name": "陳小姐",
+          "note": "會計室"
+        }
+      ]
+    },
+    {
+      "id": "academic",
+      "name": "教務處",
+      "category": "行政處室",
+      "color": "blue",
+      "icon": "book-open",
+      "direct_line": "4783574",
+      "fax": "4882675",
+      "contacts": [
+        {
+          "title": "主任",
+          "ext": "1201",
+          "name": "李主任",
+          "note": "教務處"
+        },
+        {
+          "title": "教學組長",
+          "ext": "1211",
+          "name": "邱組長",
+          "note": ""
+        },
+        {
+          "title": "幹事",
+          "ext": "1212",
+          "name": "張小姐",
+          "note": "教學組"
+        },
+        {
+          "title": "印刷室",
+          "ext": "1213",
+          "name": "陳先生",
+          "note": ""
+        },
+        {
+          "title": "註冊組長",
+          "ext": "1221",
+          "name": "賴組長",
+          "note": ""
+        },
+        {
+          "title": "幹事",
+          "ext": "1222",
+          "name": "曾小姐",
+          "note": "註冊組"
+        },
+        {
+          "title": "設備組長",
+          "ext": "1231",
+          "name": "鄭組長",
+          "note": ""
+        },
+        {
+          "title": "助理員",
+          "ext": "1232",
+          "name": "謝小姐",
+          "note": "設備組"
+        },
+        {
+          "title": "書記",
+          "ext": "1233",
+          "name": "吳先生",
+          "note": ""
+        },
+        {
+          "title": "數位前導助理",
+          "ext": "1234",
+          "name": "王小姐",
+          "note": ""
+        },
+        {
+          "title": "實驗研究組長",
+          "ext": "1241",
+          "name": "邱組長",
+          "note": "實研組"
+        },
+        {
+          "title": "幹事",
+          "ext": "1242",
+          "name": "宋先生",
+          "note": "實研組"
+        },
+        {
+          "title": "均質化專案助理",
+          "ext": "1243",
+          "name": "",
+          "note": "實研組"
+        },
+        {
+          "title": "學期歷程檔案助理",
+          "ext": "1244",
+          "name": "楊小姐",
+          "note": ""
+        },
+        {
+          "title": "試務組組長",
+          "ext": "1251",
+          "name": "蘇組長",
+          "note": "試務組"
+        },
+        {
+          "title": "幹事",
+          "ext": "1252",
+          "name": "蔡小姐",
+          "note": "試務組"
+        },
+        {
+          "title": "教務處分機",
+          "ext": "1261",
+          "name": "",
+          "note": "辦公室"
+        },
+        {
+          "title": "英語教師",
+          "ext": "1262",
+          "name": "",
+          "note": ""
+        },
+        {
+          "title": "雙語助理",
+          "ext": "1263",
+          "name": "葉先生",
+          "note": ""
+        },
+        {
+          "title": "雙語教師",
+          "ext": "1264",
+          "name": "高老師",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "general_affairs",
+      "name": "總務處",
+      "category": "行政處室",
+      "color": "teal",
+      "icon": "shield-check",
+      "direct_line": "4783349",
+      "fax": "4780164",
+      "contacts": [
+        {
+          "title": "主任",
+          "ext": "1401",
+          "name": "劉主任",
+          "note": "總務處"
+        },
+        {
+          "title": "文書組長",
+          "ext": "1411",
+          "name": "黃組長",
+          "note": "文書組"
+        },
+        {
+          "title": "臨時人員",
+          "ext": "1412",
+          "name": "鍾小姐",
+          "note": "文書組"
+        },
+        {
+          "title": "出納組長",
+          "ext": "1421",
+          "name": "黃組長",
+          "note": "出納組"
+        },
+        {
+          "title": "庶務組長",
+          "ext": "1431",
+          "name": "劉組長",
+          "note": "庶務組"
+        },
+        {
+          "title": "財管管理員",
+          "ext": "1432",
+          "name": "謝先生",
+          "note": "庶務組"
+        },
+        {
+          "title": "採購幹事",
+          "ext": "1433",
+          "name": "張先生",
+          "note": "庶務組"
+        },
+        {
+          "title": "學務創新人力",
+          "ext": "1434",
+          "name": "彭先生",
+          "note": "總務處"
+        },
+        {
+          "title": "臨時人員",
+          "ext": "1435",
+          "name": "宋先生",
+          "note": "總務處"
+        }
+      ]
+    },
+    {
+      "id": "coop_store",
+      "name": "員生社",
+      "category": "校園設施",
+      "color": "orange",
+      "icon": "shopping-cart",
+      "direct_line": "4750453",
+      "fax": "",
+      "contacts": [
+        {
+          "title": "員生社",
+          "ext": "1491",
+          "name": "林小姐",
+          "note": "員生消費合作社"
+        }
+      ]
+    },
+    {
+      "id": "homeroom_teachers",
+      "name": "導師辦公室",
+      "category": "教學導師",
+      "color": "indigo",
+      "icon": "graduation-cap",
+      "direct_line": "",
+      "fax": "",
+      "contacts": [
+        {
+          "title": "悅知樓1樓導師室(高一)",
+          "ext": "1361, 1365",
+          "name": "",
+          "note": "悅知樓1F"
+        },
+        {
+          "title": "悅知樓2樓導師室(高一)",
+          "ext": "1366",
+          "name": "",
+          "note": "悅知樓2F"
+        },
+        {
+          "title": "悅知樓3樓導師室(高二)",
+          "ext": "1362, 1364",
+          "name": "",
+          "note": "悅知樓3F"
+        },
+        {
+          "title": "日新樓1樓導師室(高三)",
+          "ext": "1363, 1367",
+          "name": "",
+          "note": "日新樓1F"
+        }
+      ]
+    },
+    {
+      "id": "subject_teachers",
+      "name": "專任教師辦公室",
+      "category": "教學導師",
+      "color": "violet",
+      "icon": "briefcase",
+      "direct_line": "",
+      "fax": "",
+      "contacts": [
+        {
+          "title": "蘊慧樓1樓專一辦公室",
+          "ext": "1271, 1275",
+          "name": "",
+          "note": "蘊慧樓1F"
+        },
+        {
+          "title": "蘊慧樓2樓專二辦公室",
+          "ext": "1272",
+          "name": "",
+          "note": "蘊慧樓2F"
+        },
+        {
+          "title": "日新樓2樓專三辦公室",
+          "ext": "1273",
+          "name": "",
+          "note": "日新樓2F"
+        },
+        {
+          "title": "日新樓3樓專四辦公室",
+          "ext": "1274",
+          "name": "",
+          "note": "日新樓3F"
+        }
+      ]
+    },
+    {
+      "id": "science_labs",
+      "name": "自然實驗室",
+      "category": "專科實驗",
+      "color": "cyan",
+      "icon": "flask",
+      "direct_line": "",
+      "fax": "",
+      "contacts": [
+        {
+          "title": "化學實驗室",
+          "ext": "1373",
+          "name": "",
+          "note": "化學科"
+        },
+        {
+          "title": "基礎理化實驗室",
+          "ext": "1374",
+          "name": "",
+          "note": "理化科"
+        },
+        {
+          "title": "物理實驗室",
+          "ext": "1375",
+          "name": "",
+          "note": "物理科"
+        },
+        {
+          "title": "生物實驗室",
+          "ext": "1376",
+          "name": "",
+          "note": "生物科"
+        },
+        {
+          "title": "基礎生物實驗室",
+          "ext": "1378",
+          "name": "",
+          "note": "生物科"
+        },
+        {
+          "title": "地科實驗室",
+          "ext": "1379",
+          "name": "",
+          "note": "地球科學科"
+        }
+      ]
+    },
+    {
+      "id": "special_classrooms",
+      "name": "專科教室",
+      "category": "專科實驗",
+      "color": "sky",
+      "icon": "monitor",
+      "direct_line": "",
+      "fax": "",
+      "contacts": [
+        {
+          "title": "啟明樓校史室",
+          "ext": "1284",
+          "name": "",
+          "note": "啟明樓"
+        },
+        {
+          "title": "語言教室",
+          "ext": "1285",
+          "name": "",
+          "note": ""
+        },
+        {
+          "title": "蘊慧樓電腦機房",
+          "ext": "1286",
+          "name": "",
+          "note": "蘊慧樓"
+        },
+        {
+          "title": "電腦教室一",
+          "ext": "1287",
+          "name": "",
+          "note": ""
+        },
+        {
+          "title": "視聽一教室",
+          "ext": "1288",
+          "name": "",
+          "note": ""
+        },
+        {
+          "title": "電腦教室二",
+          "ext": "1289",
+          "name": "",
+          "note": ""
+        },
+        {
+          "title": "美術教室",
+          "ext": "1291",
+          "name": "",
+          "note": "藝能科"
+        },
+        {
+          "title": "科技應用教室",
+          "ext": "1292",
+          "name": "",
+          "note": "科技科"
+        },
+        {
+          "title": "新興科技推廣教室",
+          "ext": "1293",
+          "name": "",
+          "note": "前瞻科技"
+        },
+        {
+          "title": "雙語教室",
+          "ext": "1294",
+          "name": "",
+          "note": "雙語教育"
+        },
+        {
+          "title": "電腦教室三",
+          "ext": "1295",
+          "name": "",
+          "note": ""
+        },
+        {
+          "title": "探究與實作教室",
+          "ext": "1296",
+          "name": "",
+          "note": "自主學習"
+        },
+        {
+          "title": "環境教育中心",
+          "ext": "1297",
+          "name": "",
+          "note": "環教空間"
+        }
+      ]
+    },
+    {
+      "id": "rixin_classrooms",
+      "name": "日新樓專科教室",
+      "category": "專科實驗",
+      "color": "pink",
+      "icon": "music",
+      "direct_line": "",
+      "fax": "",
+      "contacts": [
+        {
+          "title": "英語情境教室",
+          "ext": "1711",
+          "name": "",
+          "note": "日新樓"
+        },
+        {
+          "title": "日新樓展演中心",
+          "ext": "1712",
+          "name": "",
+          "note": "日新樓"
+        },
+        {
+          "title": "護理教室",
+          "ext": "1751",
+          "name": "",
+          "note": "日新樓"
+        },
+        {
+          "title": "計概教室",
+          "ext": "1752",
+          "name": "",
+          "note": "日新樓"
+        },
+        {
+          "title": "音樂教室",
+          "ext": "1761",
+          "name": "",
+          "note": "日新樓"
+        },
+        {
+          "title": "藝術生活教室",
+          "ext": "1764",
+          "name": "",
+          "note": "日新樓"
+        },
+        {
+          "title": "視覺藝術教室",
+          "ext": "1765",
+          "name": "",
+          "note": "日新樓"
+        }
+      ]
+    },
+    {
+      "id": "yufeng_building",
+      "name": "御風樓",
+      "category": "大樓專區",
+      "color": "purple",
+      "icon": "wind",
+      "direct_line": "",
+      "fax": "",
+      "contacts": [
+        {
+          "title": "御風2-1",
+          "ext": "2421",
+          "name": "",
+          "note": "御風樓2F"
+        },
+        {
+          "title": "御風2-2",
+          "ext": "2422",
+          "name": "",
+          "note": "御風樓2F"
+        },
+        {
+          "title": "御風2-3",
+          "ext": "2423",
+          "name": "",
+          "note": "御風樓2F"
+        },
+        {
+          "title": "御風3-1",
+          "ext": "2431",
+          "name": "",
+          "note": "御風樓3F"
+        },
+        {
+          "title": "御風3-2",
+          "ext": "2432",
+          "name": "",
+          "note": "御風樓3F"
+        },
+        {
+          "title": "御風3-3",
+          "ext": "2433",
+          "name": "",
+          "note": "御風樓3F"
+        },
+        {
+          "title": "御風3-4",
+          "ext": "2434",
+          "name": "",
+          "note": "御風樓3F"
+        },
+        {
+          "title": "社團教室2",
+          "ext": "2435",
+          "name": "",
+          "note": "御風樓社團活動空間"
+        }
+      ]
+    },
+    {
+      "id": "life_science_building",
+      "name": "生科大樓",
+      "category": "大樓專區",
+      "color": "lime",
+      "icon": "cpu",
+      "direct_line": "",
+      "fax": "",
+      "contacts": [
+        {
+          "title": "體育器材室",
+          "ext": "1811",
+          "name": "",
+          "note": "生科大樓"
+        },
+        {
+          "title": "烹飪教室",
+          "ext": "1822",
+          "name": "",
+          "note": "生科大樓家政烹飪"
+        },
+        {
+          "title": "生活科技教室",
+          "ext": "1821",
+          "name": "",
+          "note": "生科大樓工藝設計"
+        },
+        {
+          "title": "家政教室",
+          "ext": "1822",
+          "name": "",
+          "note": "生科大樓家政教育"
+        }
+      ]
+    },
+    {
+      "id": "vocational",
+      "name": "實習處",
+      "category": "行政處室",
+      "color": "fuchsia",
+      "icon": "wrench",
+      "direct_line": "",
+      "fax": "",
+      "contacts": [
+        {
+          "title": "實習處主任",
+          "ext": "1701",
+          "name": "簡主任",
+          "note": "實習處"
+        },
+        {
+          "title": "實習就業組長",
+          "ext": "1702",
+          "name": "蔡組長",
+          "note": "實習就業組"
+        },
+        {
+          "title": "資訊科主任",
+          "ext": "1703",
+          "name": "廖主任",
+          "note": "資訊科"
+        },
+        {
+          "title": "技佐",
+          "ext": "1704",
+          "name": "林先生",
+          "note": "實習處"
+        },
+        {
+          "title": "電子科主任",
+          "ext": "1705",
+          "name": "余主任",
+          "note": "電子科"
+        },
+        {
+          "title": "技士",
+          "ext": "1706",
+          "name": "卓小姐",
+          "note": "實習處"
+        }
+      ]
+    },
+    {
+      "id": "student_affairs",
+      "name": "學務處",
+      "category": "行政處室",
+      "color": "orange",
+      "icon": "award",
+      "direct_line": "4758950",
+      "fax": "4757034",
+      "contacts": [
+        {
+          "title": "主任",
+          "ext": "1301",
+          "name": "呂主任",
+          "note": "學務處"
+        },
+        {
+          "title": "午餐秘書",
+          "ext": "1302",
+          "name": "李老師",
+          "note": "午餐業務"
+        },
+        {
+          "title": "學務創新人力",
+          "ext": "1303",
+          "name": "呂先生",
+          "note": "學務處"
+        },
+        {
+          "title": "訓育組長",
+          "ext": "1311",
+          "name": "簡組長",
+          "note": "訓育組"
+        },
+        {
+          "title": "幹事",
+          "ext": "1312",
+          "name": "傅小姐",
+          "note": "訓育組"
+        },
+        {
+          "title": "活動組長",
+          "ext": "1321",
+          "name": "魏組長",
+          "note": "社團活動"
+        },
+        {
+          "title": "學務創新人力",
+          "ext": "1322",
+          "name": "林先生",
+          "note": "活動組"
+        },
+        {
+          "title": "體育組長",
+          "ext": "1331",
+          "name": "廖組長",
+          "note": "體育組"
+        },
+        {
+          "title": "游泳池",
+          "ext": "1333",
+          "name": "陳先生",
+          "note": "游泳池管理"
+        },
+        {
+          "title": "管理員",
+          "ext": "1334",
+          "name": "鍾小姐",
+          "note": "體育館管理"
+        },
+        {
+          "title": "跆拳道館",
+          "ext": "1335",
+          "name": "",
+          "note": "跆拳道專用練習館"
+        },
+        {
+          "title": "衛生組長",
+          "ext": "1341",
+          "name": "詹組長",
+          "note": "環境衛生組"
+        },
+        {
+          "title": "護理師(健康中心)",
+          "ext": "1342",
+          "name": "陳小姐",
+          "note": "健康中心"
+        },
+        {
+          "title": "學務創新人力",
+          "ext": "1343",
+          "name": "張先生",
+          "note": "衛生組"
+        },
+        {
+          "title": "健康中心",
+          "ext": "1119",
+          "name": "陳小姐",
+          "note": "健康中心"
+        },
+        {
+          "title": "禮堂準備室",
+          "ext": "1324",
+          "name": "",
+          "note": "禮堂/活動中心"
+        }
+      ]
+    },
+    {
+      "id": "campus_safety",
+      "name": "校安中心",
+      "category": "行政處室",
+      "color": "red",
+      "icon": "alert-triangle",
+      "direct_line": "4854998",
+      "fax": "4780428",
+      "contacts": [
+        {
+          "title": "學務創新人力",
+          "ext": "1351",
+          "name": "廖先生",
+          "note": "校安值班"
+        },
+        {
+          "title": "生輔組長",
+          "ext": "1352",
+          "name": "張組長",
+          "note": "生活輔導組"
+        },
+        {
+          "title": "學務創新人力",
+          "ext": "1353",
+          "name": "李先生",
+          "note": "校安專線維護"
+        },
+        {
+          "title": "學務創新人力",
+          "ext": "1354",
+          "name": "陳先生",
+          "note": "校園安全巡邏"
+        },
+        {
+          "title": "幹事",
+          "ext": "1355",
+          "name": "范小姐",
+          "note": "生輔組"
+        },
+        {
+          "title": "學務創新人力",
+          "ext": "1356",
+          "name": "郭先生",
+          "note": "生輔組"
+        },
+        {
+          "title": "學務創新人力",
+          "ext": "1357",
+          "name": "彭先生",
+          "note": "生輔組"
+        }
+      ]
+    },
+    {
+      "id": "counseling",
+      "name": "輔導室",
+      "category": "行政處室",
+      "color": "pink",
+      "icon": "heart",
+      "direct_line": "4758437",
+      "fax": "",
+      "contacts": [
+        {
+          "title": "輔導主任",
+          "ext": "1503",
+          "name": "林主任",
+          "note": "輔導室"
+        },
+        {
+          "title": "專任輔導教師",
+          "ext": "1504",
+          "name": "陳老師",
+          "note": "心輔諮商"
+        },
+        {
+          "title": "專任輔導教師",
+          "ext": "1507",
+          "name": "吳老師",
+          "note": "心輔諮商"
+        },
+        {
+          "title": "專任輔導教師",
+          "ext": "1501",
+          "name": "金老師",
+          "note": "心輔諮商"
+        },
+        {
+          "title": "專任輔導教師",
+          "ext": "1502",
+          "name": "陳老師",
+          "note": "心輔諮商"
+        },
+        {
+          "title": "特教教師1",
+          "ext": "1505",
+          "name": "何老師",
+          "note": "特殊教育"
+        },
+        {
+          "title": "特教教師2",
+          "ext": "1506",
+          "name": "林老師",
+          "note": "特殊教育"
+        },
+        {
+          "title": "特教教師3",
+          "ext": "1511",
+          "name": "曾老師",
+          "note": "特殊教育"
+        },
+        {
+          "title": "生涯資訊室",
+          "ext": "1508",
+          "name": "",
+          "note": "升學升階生涯規劃"
+        },
+        {
+          "title": "團體諮商室",
+          "ext": "1509",
+          "name": "",
+          "note": "團體輔導空間"
+        },
+        {
+          "title": "學習中心",
+          "ext": "1510",
+          "name": "",
+          "note": "資源教室學習輔導"
+        }
+      ]
+    },
+    {
+      "id": "library",
+      "name": "圖書館",
+      "category": "行政處室",
+      "color": "yellow",
+      "icon": "library",
+      "direct_line": "4780586",
+      "fax": "",
+      "contacts": [
+        {
+          "title": "主任",
+          "ext": "1601",
+          "name": "施主任",
+          "note": "圖書館"
+        },
+        {
+          "title": "讀者服務組長",
+          "ext": "1602",
+          "name": "何組長",
+          "note": "讀者服務組"
+        },
+        {
+          "title": "資訊媒體組長",
+          "ext": "1603",
+          "name": "賴組長",
+          "note": "資訊媒體組"
+        },
+        {
+          "title": "幹事/讀者服務櫃台",
+          "ext": "1605",
+          "name": "呂小姐",
+          "note": "借還書櫃台"
+        },
+        {
+          "title": "喜閱學堂",
+          "ext": "1606",
+          "name": "",
+          "note": "閱讀自習中心"
+        },
+        {
+          "title": "演藝廳",
+          "ext": "1607",
+          "name": "",
+          "note": "圖書館大型演講展演廳"
+        }
+      ]
+    }
+  ]
+}
